@@ -51,6 +51,7 @@ void ImAnim::AbstractAnimation::start()
     m_eAnimationState = State::Running;
     m_startTime = std::chrono::high_resolution_clock::now();
     m_nCurrentLoop = 0;
+    totalAnimationsRunning++;
 
     onStartAnimation();
     updateValueForProgress(m_easingCurve.calculateValueForProgress(0.0));
@@ -65,6 +66,7 @@ void ImAnim::AbstractAnimation::stop()
         m_eAnimationState = State::Stopped;
         m_nCurrentLoop = 0;
         onStopAnimation();
+        totalAnimationsRunning--;
     }
 }
 
