@@ -7,8 +7,8 @@ project "ImAnim"
 
 	files
 	{
-		"**.cpp",
-		"**.h"
+		"src/**.cpp",
+		"src/**.h"
 	}
 
 	links{"ImGui"}
