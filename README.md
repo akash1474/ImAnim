@@ -6,7 +6,8 @@ A simple, Qt-style animation library for **ImGui** that uses easing functions to
 
 ## ✨ Features
 
-- **Animate ImGui Properties**: Easily animate `ImVec2` and `ImVec4` values for positions, sizes, colors, and more.
+- **Animate ImGui Properties**: Easily animate `float`, `ImVec2`, and `ImVec4` values for positions, sizes, colors, and more.
+- **Interactive Debug Pane**: A built-in tool to visualize and tweak all easing functions in real-time.
 - **Easing Functions**: A collection of standard easing curves (Linear, InOutQuad, etc.) to control animation acceleration.
 - **Keyframe Support**: Define intermediate animation states between the start and end values.
 - **Animation Groups**: Run animations in sequence or in parallel.
@@ -20,7 +21,64 @@ To use ImAnim in your own project, simply copy the classes from this repository 
 
 
 
+## 🛠️ Animation Debug Pane
+
+ImAnim includes a powerful, self-contained debug pane to help you visualize and test all easing functions. To use it, simply include the header and call the render function once per frame inside your main loop.
+
+```cpp
+// In your main application loop where you render ImGui windows
+#include "DebugAnimationPane.h"
+
+// ...
+ImGui::NewFrame();
+
+ImAnim::RenderDebugAnimationPane(); // Renders the debug window
+
+// ...
+ImGui::Render();
+```
+
+The debug pane allows you to:
+
+- Select any easing curve from a dropdown menu.
+- See a real-time graph of the curve's shape.
+- Adjust parameters like **duration**, **amplitude**, **period**, and **overshoot**.
+- Play the animation live on a progress bar to see the effect of your changes.
+
+
+
 ## 💡 Usage Examples
+
+
+
+### Animating a Single Float (`FloatAnim`)
+
+The `FloatAnim` class is perfect for animating individual values, such as an object's alpha, a progress bar, or any other single floating-point number.
+
+```cpp
+static float progressValue = 0.0f;
+static ImAnim::FloatAnim* pProgressAnim = nullptr;
+
+if (pProgressAnim == nullptr)
+{
+    pProgressAnim = new ImAnim::FloatAnim(&progressValue);
+    pProgressAnim->setStartValue(0.0f);
+    pProgressAnim->setEndValue(1.0f);
+    pProgressAnim->setDuration(2.0);
+    pProgressAnim->setLoopCount(-1); // Loop forever
+    pProgressAnim->setEasingCurve(ImAnim::EasingCurve::Type::InOutCubic);
+    pProgressAnim->start();
+}
+else
+{
+    pProgressAnim->update();
+}
+
+// The 'progressValue' is now being animated between 0.0 and 1.0
+ImGui::ProgressBar(progressValue);
+```
+
+
 
 ### Animating Text Color
 
