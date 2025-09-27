@@ -1,7 +1,7 @@
 #include "ImVec2Anim.h"
 #include "Utils.h"
 
-imanim::ImVec2Anim::ImVec2Anim(ImVec2 *pVec2)
+ImAnim::ImVec2Anim::ImVec2Anim(ImVec2 *pVec2)
     : m_pVec2(pVec2)
 {
     // Add dummy start and end key frames
@@ -11,27 +11,27 @@ imanim::ImVec2Anim::ImVec2Anim(ImVec2 *pVec2)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-imanim::ImVec2Anim::~ImVec2Anim()
+ImAnim::ImVec2Anim::~ImVec2Anim()
 {
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-const ImVec2 &imanim::ImVec2Anim::getEndValue() const
+const ImVec2 &ImAnim::ImVec2Anim::getEndValue() const
 {
     return m_vecKeyValues[m_vecKeyValues.size() - 1].m_vValue;
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-const ImVec2 &imanim::ImVec2Anim::getStartValue() const
+const ImVec2 &ImAnim::ImVec2Anim::getStartValue() const
 {
     return m_vecKeyValues[0].m_vValue;
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::ImVec2Anim::onStartAnimation()
+void ImAnim::ImVec2Anim::onStartAnimation()
 {
     m_curStartKeyFrame = m_vecKeyValues[0];
     m_curEndKeyFrame = m_vecKeyValues[1];
@@ -40,14 +40,14 @@ void imanim::ImVec2Anim::onStartAnimation()
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::ImVec2Anim::setEndValue(const ImVec2 &vEndValue)
+void ImAnim::ImVec2Anim::setEndValue(const ImVec2 &vEndValue)
 {
     m_vecKeyValues[m_vecKeyValues.size() - 1] = KeyValue(1.0, vEndValue);
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::ImVec2Anim::setKeyValueAt(double dStep, const ImVec2 &vValue)
+void ImAnim::ImVec2Anim::setKeyValueAt(double dStep, const ImVec2 &vValue)
 {
     if ((dStep < 0.0) || (dStep > 1.0))
     {
@@ -59,7 +59,7 @@ void imanim::ImVec2Anim::setKeyValueAt(double dStep, const ImVec2 &vValue)
     for (size_t index = 0; index < m_vecKeyValues.size(); ++index)
     {
         double dCurStep = m_vecKeyValues[index].m_dStep;
-        if (imanim::Utils::nearlyEqual(dCurStep, dStep))
+        if (ImAnim::Utils::nearlyEqual(dCurStep, dStep))
         {
             // Replace the current key frame
             m_vecKeyValues[index] = KeyValue(dStep, vValue);
@@ -77,14 +77,14 @@ void imanim::ImVec2Anim::setKeyValueAt(double dStep, const ImVec2 &vValue)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::ImVec2Anim::setStartValue(const ImVec2 &vStartValue)
+void ImAnim::ImVec2Anim::setStartValue(const ImVec2 &vStartValue)
 {
     m_vecKeyValues[0] = KeyValue(0.0, vStartValue);
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::ImVec2Anim::updateValueForProgress(double dProgress)
+void ImAnim::ImVec2Anim::updateValueForProgress(double dProgress)
 {
     // Make sure that the current start and end frames are valid
     if (dProgress > m_curEndKeyFrame.m_dStep)

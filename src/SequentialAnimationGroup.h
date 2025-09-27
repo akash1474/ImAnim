@@ -2,7 +2,7 @@
 
 #include "AnimationGroup.h"
 
-namespace imanim
+namespace ImAnim
 {
 
 /**
@@ -64,4 +64,4 @@ private:
     size_t m_nIndexOfCurrentAnimation { 0 };
 };
 
-} // namespace imanim
+} // namespace ImAnim

@@ -2,7 +2,7 @@
 
 #include <cfloat>
 
-namespace imanim
+namespace ImAnim
 {
 
 /**
@@ -24,4 +24,4 @@ public:
         double dTolerance = DBL_EPSILON);
 };
 
-} // namespace imanim
+} // namespace ImAnim

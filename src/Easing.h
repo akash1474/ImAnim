@@ -1,6 +1,6 @@
 #pragma once
 
-namespace imanim
+namespace ImAnim
 {
 
 /**
@@ -388,4 +388,4 @@ private:
         double c, double d, double a, double p);
 };
 
-} // namespace imanim
+} // namespace ImAnim

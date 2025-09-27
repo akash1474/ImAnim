@@ -136,13 +136,13 @@ int main(int, char**)
             static float fColorDurationInSecs = 2.0F;
             static int nColorLoopCount = 1;
             static int nColorEasingFuncIndex = 0;
-            static imanim::ImVec4Anim *pColorAnim = nullptr;
+            static ImAnim::ImVec4Anim *pColorAnim = nullptr;
 
             static ImVec2 vWinPos((ImGui::GetMainViewport()->WorkPos.x + 20),
                 (ImGui::GetMainViewport()->WorkPos.y + 400));
             static ImVec2 vWinSize(200, 50);
-            static imanim::ImVec2Anim *pWinPosAnim = nullptr;
-            static imanim::ImVec2Anim *pWinSizeAnim = nullptr;
+            static ImAnim::ImVec2Anim *pWinPosAnim = nullptr;
+            static ImAnim::ImVec2Anim *pWinSizeAnim = nullptr;
 
             ImGui::Begin("Demo Animation", nullptr,
                 ImGuiWindowFlags_NoTitleBar |
@@ -166,15 +166,15 @@ int main(int, char**)
             helpMarker("Number of loops for animation. 0 = no animation; "
                 "-1 = loop forever");
             ImGui::Combo("Easing Function", &nColorEasingFuncIndex,
-                imanim::EasingCurve::TYPE_STRINGS,
-                IM_ARRAYSIZE(imanim::EasingCurve::TYPE_STRINGS));
+                ImAnim::EasingCurve::TYPE_STRINGS,
+                IM_ARRAYSIZE(ImAnim::EasingCurve::TYPE_STRINGS));
             if (ImGui::Button("Start Color Animation"))
             {
                 if (pColorAnim == nullptr)
                 {
                     // Create the animation and attach it to the ImVec4 being
                     // used to color the text (vTextColor)
-                    pColorAnim = new imanim::ImVec4Anim(&vTextColor);
+                    pColorAnim = new ImAnim::ImVec4Anim(&vTextColor);
                 }
                 pColorAnim->setStartValue(vStartColor);
                 pColorAnim->setEndValue(vEndColor);
@@ -186,7 +186,7 @@ int main(int, char**)
                 pColorAnim->setLoopCount(nColorLoopCount);
                 // See https://easings.net/ for a list of the easing functions
                 pColorAnim->setEasingCurve(static_cast<
-                    imanim::EasingCurve::Type>(nColorEasingFuncIndex));
+                    ImAnim::EasingCurve::Type>(nColorEasingFuncIndex));
                 pColorAnim->start();
             }
             ImGui::SameLine();
@@ -212,7 +212,7 @@ int main(int, char**)
                     // is just animating the ImVec2 object, so you can use a
                     // similar approach for animating other ImGui ImVec2
                     // attributes.
-                    pWinPosAnim = new imanim::ImVec2Anim(&vWinPos);
+                    pWinPosAnim = new ImAnim::ImVec2Anim(&vWinPos);
                     const ImGuiViewport *pViewport = ImGui::GetMainViewport();
                     pWinPosAnim->setStartValue(ImVec2(
                         (pViewport->WorkPos.x + 20),
@@ -224,7 +224,7 @@ int main(int, char**)
                         (pViewport->WorkPos.x + 20),
                         (pViewport->WorkPos.y + 400)));
                     pWinPosAnim->setEasingCurve(
-                        imanim::EasingCurve::Type::InOutQuad);
+                        ImAnim::EasingCurve::Type::InOutQuad);
                     pWinPosAnim->setDuration(2.5);
                     pWinPosAnim->setLoopCount(-1);
                 }
@@ -249,12 +249,12 @@ int main(int, char**)
             {
                 if (pWinSizeAnim == nullptr)
                 {
-                    pWinSizeAnim = new imanim::ImVec2Anim(&vWinSize);
+                    pWinSizeAnim = new ImAnim::ImVec2Anim(&vWinSize);
                     pWinSizeAnim->setStartValue(ImVec2(200, 50));
                     pWinSizeAnim->setKeyValueAt(0.5, ImVec2(600, 300));
                     pWinSizeAnim->setEndValue(ImVec2(200, 50));
                     pWinSizeAnim->setEasingCurve(
-                        imanim::EasingCurve::Type::InOutQuart);
+                        ImAnim::EasingCurve::Type::InOutQuart);
                     pWinSizeAnim->setDuration(2.0);
                     pWinSizeAnim->setLoopCount(-1);
                 }

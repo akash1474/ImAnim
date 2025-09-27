@@ -2,7 +2,7 @@
 
 #include "AnimationGroup.h"
 
-namespace imanim
+namespace ImAnim
 {
 
 /**
@@ -48,4 +48,4 @@ protected:
     void updateValueForProgress(double dProgress) override;
 };
 
-} // namespace imanim
+} // namespace ImAnim

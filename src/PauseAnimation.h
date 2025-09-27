@@ -2,14 +2,14 @@
 
 #include "AbstractAnimation.h"
 
-namespace imanim
+namespace ImAnim
 {
 
 /**
  * @brief An animation that acts like a pause and does nothing during its
  * duration
  */
-class PauseAnimation : public imanim::AbstractAnimation
+class PauseAnimation : public ImAnim::AbstractAnimation
 {
 public:
 
@@ -39,4 +39,4 @@ protected:
     void updateValueForProgress(double dProgress) override;
 };
 
-} // namespace imanim
+} // namespace ImAnim

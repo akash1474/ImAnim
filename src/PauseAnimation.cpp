@@ -1,13 +1,13 @@
 #include "PauseAnimation.h"
 
-imanim::PauseAnimation::PauseAnimation(float fDurationInSecs)
+ImAnim::PauseAnimation::PauseAnimation(float fDurationInSecs)
 {
     setDuration(fDurationInSecs);
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::PauseAnimation::updateValueForProgress(double dProgress)
+void ImAnim::PauseAnimation::updateValueForProgress(double dProgress)
 {
     // Do nothing
 }

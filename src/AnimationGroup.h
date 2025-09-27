@@ -3,7 +3,7 @@
 #include "AbstractAnimation.h"
 #include <vector>
 
-namespace imanim
+namespace ImAnim
 {
 
 /**
@@ -67,4 +67,4 @@ protected:
     std::vector<AbstractAnimation *> m_vecAnimations;
 };
 
-} // namespace imanim
+} // namespace ImAnim

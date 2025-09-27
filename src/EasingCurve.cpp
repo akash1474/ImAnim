@@ -2,14 +2,14 @@
 #include "Easing.h"
 #include <algorithm>
 
-imanim::EasingCurve::EasingCurve(EasingCurve::Type eType)
+ImAnim::EasingCurve::EasingCurve(EasingCurve::Type eType)
     : m_eType(eType)
 {
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-double imanim::EasingCurve::calculateValueForProgress(double dProgress)
+double ImAnim::EasingCurve::calculateValueForProgress(double dProgress)
 {
     double dValue = dProgress;
     dProgress = std::clamp(dProgress, 0.0, 1.0);
@@ -17,131 +17,131 @@ double imanim::EasingCurve::calculateValueForProgress(double dProgress)
     switch (m_eType)
     {
     case Type::Linear:
-        dValue = imanim::Easing::easeNone(dProgress);
+        dValue = ImAnim::Easing::easeNone(dProgress);
         break;
     case Type::InQuad:
-        dValue = imanim::Easing::easeInQuad(dProgress);
+        dValue = ImAnim::Easing::easeInQuad(dProgress);
         break;
     case Type::OutQuad:
-        dValue = imanim::Easing::easeOutQuad(dProgress);
+        dValue = ImAnim::Easing::easeOutQuad(dProgress);
         break;
     case Type::InOutQuad:
-        dValue = imanim::Easing::easeInOutQuad(dProgress);
+        dValue = ImAnim::Easing::easeInOutQuad(dProgress);
         break;
     case Type::OutInQuad:
-        dValue = imanim::Easing::easeOutInQuad(dProgress);
+        dValue = ImAnim::Easing::easeOutInQuad(dProgress);
         break;
     case Type::InCubic:
-        dValue = imanim::Easing::easeInCubic(dProgress);
+        dValue = ImAnim::Easing::easeInCubic(dProgress);
         break;
     case Type::OutCubic:
-        dValue = imanim::Easing::easeOutCubic(dProgress);
+        dValue = ImAnim::Easing::easeOutCubic(dProgress);
         break;
     case Type::InOutCubic:
-        dValue = imanim::Easing::easeInOutCubic(dProgress);
+        dValue = ImAnim::Easing::easeInOutCubic(dProgress);
         break;
     case Type::OutInCubic:
-        dValue = imanim::Easing::easeOutInCubic(dProgress);
+        dValue = ImAnim::Easing::easeOutInCubic(dProgress);
         break;
     case Type::InQuart:
-        dValue = imanim::Easing::easeInQuart(dProgress);
+        dValue = ImAnim::Easing::easeInQuart(dProgress);
         break;
     case Type::OutQuart:
-        dValue = imanim::Easing::easeOutQuart(dProgress);
+        dValue = ImAnim::Easing::easeOutQuart(dProgress);
         break;
     case Type::InOutQuart:
-        dValue = imanim::Easing::easeInOutQuart(dProgress);
+        dValue = ImAnim::Easing::easeInOutQuart(dProgress);
         break;
     case Type::OutInQuart:
-        dValue = imanim::Easing::easeOutInQuart(dProgress);
+        dValue = ImAnim::Easing::easeOutInQuart(dProgress);
         break;
     case Type::InQuint:
-        dValue = imanim::Easing::easeInQuint(dProgress);
+        dValue = ImAnim::Easing::easeInQuint(dProgress);
         break;
     case Type::OutQuint:
-        dValue = imanim::Easing::easeOutQuint(dProgress);
+        dValue = ImAnim::Easing::easeOutQuint(dProgress);
         break;
     case Type::InOutQuint:
-        dValue = imanim::Easing::easeInOutQuint(dProgress);
+        dValue = ImAnim::Easing::easeInOutQuint(dProgress);
         break;
     case Type::OutInQuint:
-        dValue = imanim::Easing::easeOutInQuint(dProgress);
+        dValue = ImAnim::Easing::easeOutInQuint(dProgress);
         break;
     case Type::InSine:
-        dValue = imanim::Easing::easeInSine(dProgress);
+        dValue = ImAnim::Easing::easeInSine(dProgress);
         break;
     case Type::OutSine:
-        dValue = imanim::Easing::easeOutSine(dProgress);
+        dValue = ImAnim::Easing::easeOutSine(dProgress);
         break;
     case Type::InOutSine:
-        dValue = imanim::Easing::easeInOutSine(dProgress);
+        dValue = ImAnim::Easing::easeInOutSine(dProgress);
         break;
     case Type::OutInSine:
-        dValue = imanim::Easing::easeOutInSine(dProgress);
+        dValue = ImAnim::Easing::easeOutInSine(dProgress);
         break;
     case Type::InExpo:
-        dValue = imanim::Easing::easeInExpo(dProgress);
+        dValue = ImAnim::Easing::easeInExpo(dProgress);
         break;
     case Type::OutExpo:
-        dValue = imanim::Easing::easeOutExpo(dProgress);
+        dValue = ImAnim::Easing::easeOutExpo(dProgress);
         break;
     case Type::InOutExpo:
-        dValue = imanim::Easing::easeInOutExpo(dProgress);
+        dValue = ImAnim::Easing::easeInOutExpo(dProgress);
         break;
     case Type::OutInExpo:
-        dValue = imanim::Easing::easeOutInExpo(dProgress);
+        dValue = ImAnim::Easing::easeOutInExpo(dProgress);
         break;
     case Type::InCirc:
-        dValue = imanim::Easing::easeInCirc(dProgress);
+        dValue = ImAnim::Easing::easeInCirc(dProgress);
         break;
     case Type::OutCirc:
-        dValue = imanim::Easing::easeOutCirc(dProgress);
+        dValue = ImAnim::Easing::easeOutCirc(dProgress);
         break;
     case Type::InOutCirc:
-        dValue = imanim::Easing::easeInOutCirc(dProgress);
+        dValue = ImAnim::Easing::easeInOutCirc(dProgress);
         break;
     case Type::OutInCirc:
-        dValue = imanim::Easing::easeOutInCirc(dProgress);
+        dValue = ImAnim::Easing::easeOutInCirc(dProgress);
         break;
     case Type::InElastic:
-        dValue = imanim::Easing::easeInElastic(dProgress, m_dAmplitude,
+        dValue = ImAnim::Easing::easeInElastic(dProgress, m_dAmplitude,
             m_dPeriod);
         break;
     case Type::OutElastic:
-        dValue = imanim::Easing::easeOutElastic(dProgress, m_dAmplitude,
+        dValue = ImAnim::Easing::easeOutElastic(dProgress, m_dAmplitude,
             m_dPeriod);
         break;
     case Type::InOutElastic:
-        dValue = imanim::Easing::easeInOutElastic(dProgress, m_dAmplitude,
+        dValue = ImAnim::Easing::easeInOutElastic(dProgress, m_dAmplitude,
             m_dPeriod);
         break;
     case Type::OutInElastic:
-        dValue = imanim::Easing::easeOutInElastic(dProgress, m_dAmplitude,
+        dValue = ImAnim::Easing::easeOutInElastic(dProgress, m_dAmplitude,
             m_dPeriod);
         break;
     case Type::InBack:
-        dValue = imanim::Easing::easeInBack(dProgress, m_dOvershoot);
+        dValue = ImAnim::Easing::easeInBack(dProgress, m_dOvershoot);
         break;
     case Type::OutBack:
-        dValue = imanim::Easing::easeOutBack(dProgress, m_dOvershoot);
+        dValue = ImAnim::Easing::easeOutBack(dProgress, m_dOvershoot);
         break;
     case Type::InOutBack:
-        dValue = imanim::Easing::easeInOutBack(dProgress, m_dOvershoot);
+        dValue = ImAnim::Easing::easeInOutBack(dProgress, m_dOvershoot);
         break;
     case Type::OutInBack:
-        dValue = imanim::Easing::easeOutInBack(dProgress, m_dOvershoot);
+        dValue = ImAnim::Easing::easeOutInBack(dProgress, m_dOvershoot);
         break;
     case Type::InBounce:
-        dValue = imanim::Easing::easeInBounce(dProgress, m_dAmplitude);
+        dValue = ImAnim::Easing::easeInBounce(dProgress, m_dAmplitude);
         break;
     case Type::OutBounce:
-        dValue = imanim::Easing::easeOutBounce(dProgress, m_dAmplitude);
+        dValue = ImAnim::Easing::easeOutBounce(dProgress, m_dAmplitude);
         break;
     case Type::InOutBounce:
-        dValue = imanim::Easing::easeInOutBounce(dProgress, m_dAmplitude);
+        dValue = ImAnim::Easing::easeInOutBounce(dProgress, m_dAmplitude);
         break;
     case Type::OutInBounce:
-        dValue = imanim::Easing::easeOutInBounce(dProgress, m_dAmplitude);
+        dValue = ImAnim::Easing::easeOutInBounce(dProgress, m_dAmplitude);
         break;
     }
 
@@ -150,35 +150,35 @@ double imanim::EasingCurve::calculateValueForProgress(double dProgress)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-double imanim::EasingCurve::getAmplitude() const
+double ImAnim::EasingCurve::getAmplitude() const
 {
     return m_dAmplitude;
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-double imanim::EasingCurve::getOvershoot() const
+double ImAnim::EasingCurve::getOvershoot() const
 {
     return m_dOvershoot;
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-double imanim::EasingCurve::getPeriod() const
+double ImAnim::EasingCurve::getPeriod() const
 {
     return m_dPeriod;
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-imanim::EasingCurve::Type imanim::EasingCurve::getType() const
+ImAnim::EasingCurve::Type ImAnim::EasingCurve::getType() const
 {
     return m_eType;
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::EasingCurve::setAmplitude(double dAmplitude)
+void ImAnim::EasingCurve::setAmplitude(double dAmplitude)
 {
     if (dAmplitude >= 0.0)
     {
@@ -188,7 +188,7 @@ void imanim::EasingCurve::setAmplitude(double dAmplitude)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::EasingCurve::setOvershoot(double dOvershoot)
+void ImAnim::EasingCurve::setOvershoot(double dOvershoot)
 {
     if (dOvershoot >= 0.0)
     {
@@ -198,7 +198,7 @@ void imanim::EasingCurve::setOvershoot(double dOvershoot)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::EasingCurve::setPeriod(double dPeriod)
+void ImAnim::EasingCurve::setPeriod(double dPeriod)
 {
     if (dPeriod >= 0.0)
     {
@@ -208,7 +208,7 @@ void imanim::EasingCurve::setPeriod(double dPeriod)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::EasingCurve::setType(imanim::EasingCurve::Type eType)
+void ImAnim::EasingCurve::setType(ImAnim::EasingCurve::Type eType)
 {
     m_eType = eType;
 }

@@ -133,7 +133,7 @@ int main(int, char **)
 
         // Begin animation testing
         {
-            static imanim::SequentialAnimationGroup *pColorAnimGroup = nullptr;
+            static ImAnim::SequentialAnimationGroup *pColorAnimGroup = nullptr;
             static ImVec4 vText1Color(1, 1, 1, 1);
             static ImVec4 vText2Color(1, 0, 0, 1);
             static ImVec4 vText3Color(0, 1, 0, 1);
@@ -150,39 +150,39 @@ int main(int, char **)
             ImGui::TextColored(vText3Color, "Test3");
             bool bIsColorAnimRunning = (pColorAnimGroup != nullptr) &&
                 (pColorAnimGroup->getState() ==
-                imanim::AbstractAnimation::State::Running);
+                ImAnim::AbstractAnimation::State::Running);
             ImGui::BeginDisabled(bIsColorAnimRunning);
             if (ImGui::Button("Start Color Animation"))
             {
                 if (pColorAnimGroup == nullptr)
                 {
                     // Create a group of animations to run in a sequence
-                    pColorAnimGroup = new imanim::SequentialAnimationGroup();
-                    auto *pColorAnim1 = new imanim::ImVec4Anim(&vText1Color);
+                    pColorAnimGroup = new ImAnim::SequentialAnimationGroup();
+                    auto *pColorAnim1 = new ImAnim::ImVec4Anim(&vText1Color);
                     pColorAnim1->setStartValue(ImVec4(1, 1, 1, 1));
                     pColorAnim1->setEndValue(ImVec4(1, 0, 0, 1));
                     pColorAnim1->setDuration(1.5);
                     pColorAnim1->setEasingCurve(
-                        imanim::EasingCurve::Type::Linear);
-                    auto *pColorAnim2 = new imanim::ImVec4Anim(&vText2Color);
+                        ImAnim::EasingCurve::Type::Linear);
+                    auto *pColorAnim2 = new ImAnim::ImVec4Anim(&vText2Color);
                     pColorAnim2->setStartValue(ImVec4(1, 0, 0, 1));
                     pColorAnim2->setEndValue(ImVec4(0, 1, 0, 1));
                     pColorAnim2->setDuration(1.5);
                     pColorAnim2->setEasingCurve(
-                        imanim::EasingCurve::Type::Linear);
-                    auto *pColorAnim3 = new imanim::ImVec4Anim(&vText3Color);
+                        ImAnim::EasingCurve::Type::Linear);
+                    auto *pColorAnim3 = new ImAnim::ImVec4Anim(&vText3Color);
                     pColorAnim3->setStartValue(ImVec4(0, 1, 0, 1));
                     pColorAnim3->setEndValue(ImVec4(0, 0, 1, 1));
                     pColorAnim3->setDuration(1.5);
                     pColorAnim3->setEasingCurve(
-                        imanim::EasingCurve::Type::Linear);
+                        ImAnim::EasingCurve::Type::Linear);
                     // Add the 3 animations to the sequential group
                     pColorAnimGroup->addAnimation(pColorAnim1);
                     pColorAnimGroup->addAnimation(pColorAnim2);
                     pColorAnimGroup->addAnimation(pColorAnim3);
                 }
                 else if (pColorAnimGroup->getState() !=
-                    imanim::AbstractAnimation::State::Running)
+                    ImAnim::AbstractAnimation::State::Running)
                 {
                     // Reset color on the texts before starting
                     vText2Color = ImVec4(1, 0, 0, 1);
@@ -215,42 +215,42 @@ int main(int, char **)
                 (ImGui::GetMainViewport()->WorkPos.y + 300));
             static ImVec2 vWin1Pos = vStartWin1Pos;
             static ImVec2 vWin2Pos(vStartWin1Pos.x + 400, vStartWin1Pos.y);
-            static imanim::SequentialAnimationGroup *pWinPosAnimGroup = nullptr;
+            static ImAnim::SequentialAnimationGroup *pWinPosAnimGroup = nullptr;
 
             bool bIsPosAnimRunning = (pWinPosAnimGroup != nullptr) &&
                 (pWinPosAnimGroup->getState() ==
-                    imanim::AbstractAnimation::State::Running);
+                    ImAnim::AbstractAnimation::State::Running);
             ImGui::BeginDisabled(bIsPosAnimRunning);
             if (ImGui::Button("Start WinPos Animation"))
             {
                 if (pWinPosAnimGroup == nullptr)
                 {
                     // Create the animation sequence
-                    pWinPosAnimGroup = new imanim::SequentialAnimationGroup();
-                    auto *pWin1PosAnim = new imanim::ImVec2Anim(&vWin1Pos);
+                    pWinPosAnimGroup = new ImAnim::SequentialAnimationGroup();
+                    auto *pWin1PosAnim = new ImAnim::ImVec2Anim(&vWin1Pos);
                     pWin1PosAnim->setStartValue(vStartWin1Pos);
                     pWin1PosAnim->setEndValue(ImVec2((vStartWin1Pos.x + 300),
                         vStartWin1Pos.y));
                     pWin1PosAnim->setEasingCurve(
-                        imanim::EasingCurve::Type::InOutQuad);
+                        ImAnim::EasingCurve::Type::InOutQuad);
                     pWin1PosAnim->setDuration(1.5);
                     // Add a pause between the other two animations...this will
                     // pause for two seconds
-                    auto *pPause = new imanim::PauseAnimation(2.0);
-                    auto *pWin2PosAnim = new imanim::ImVec2Anim(&vWin2Pos);
+                    auto *pPause = new ImAnim::PauseAnimation(2.0);
+                    auto *pWin2PosAnim = new ImAnim::ImVec2Anim(&vWin2Pos);
                     pWin2PosAnim->setStartValue(ImVec2(vStartWin1Pos.x + 400,
                         vStartWin1Pos.y));
                     pWin2PosAnim->setEndValue(ImVec2((vStartWin1Pos.x + 700),
                         vStartWin1Pos.y));
                     pWin2PosAnim->setEasingCurve(
-                        imanim::EasingCurve::Type::InOutQuad);
+                        ImAnim::EasingCurve::Type::InOutQuad);
                     pWin2PosAnim->setDuration(1.5);
                     pWinPosAnimGroup->addAnimation(pWin1PosAnim);
                     pWinPosAnimGroup->addAnimation(pPause);
                     pWinPosAnimGroup->addAnimation(pWin2PosAnim);
                 }
                 else if (pWinPosAnimGroup->getState() !=
-                    imanim::AbstractAnimation::State::Running)
+                    ImAnim::AbstractAnimation::State::Running)
                 {
                     // Reset the position of the second window
                     vWin2Pos = ImVec2(vStartWin1Pos.x + 400, vStartWin1Pos.y);

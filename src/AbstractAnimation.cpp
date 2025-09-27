@@ -1,6 +1,6 @@
 #include "AbstractAnimation.h"
 
-const imanim::EasingCurve &imanim::AbstractAnimation::getEasingCurve()
+const ImAnim::EasingCurve &ImAnim::AbstractAnimation::getEasingCurve()
     const
 {
     return m_easingCurve;
@@ -8,7 +8,7 @@ const imanim::EasingCurve &imanim::AbstractAnimation::getEasingCurve()
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::AbstractAnimation::setDuration(float fTimeInSecs)
+void ImAnim::AbstractAnimation::setDuration(float fTimeInSecs)
 {
     // TODO: Handle if animation is already in progress
     m_fDurationInSecs = fTimeInSecs;
@@ -16,8 +16,8 @@ void imanim::AbstractAnimation::setDuration(float fTimeInSecs)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::AbstractAnimation::setEasingCurve(
-    imanim::EasingCurve::Type eEasingCurveType, double dAmplitude,
+void ImAnim::AbstractAnimation::setEasingCurve(
+    ImAnim::EasingCurve::Type eEasingCurveType, double dAmplitude,
     double dPeriod, double dOvershoot)
 {
     m_easingCurve.setType(eEasingCurveType);
@@ -28,14 +28,14 @@ void imanim::AbstractAnimation::setEasingCurve(
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::AbstractAnimation::setLoopCount(int nLoopCount)
+void ImAnim::AbstractAnimation::setLoopCount(int nLoopCount)
 {
     m_nLoopCount = nLoopCount;
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::AbstractAnimation::start()
+void ImAnim::AbstractAnimation::start()
 {
     if (m_nLoopCount == 0)
     {
@@ -58,7 +58,7 @@ void imanim::AbstractAnimation::start()
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::AbstractAnimation::stop()
+void ImAnim::AbstractAnimation::stop()
 {
     if (m_eAnimationState != State::Stopped)
     {
@@ -70,7 +70,7 @@ void imanim::AbstractAnimation::stop()
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::AbstractAnimation::update()
+void ImAnim::AbstractAnimation::update()
 {
     if (m_eAnimationState != State::Running)
     {

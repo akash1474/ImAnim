@@ -1,6 +1,6 @@
 #include "SequentialAnimationGroup.h"
 
-float imanim::SequentialAnimationGroup::getDuration() const
+float ImAnim::SequentialAnimationGroup::getDuration() const
 {
     float fDurationInSecs = 0.0F;
 
@@ -25,7 +25,7 @@ float imanim::SequentialAnimationGroup::getDuration() const
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::SequentialAnimationGroup::onStartAnimation()
+void ImAnim::SequentialAnimationGroup::onStartAnimation()
 {
     if (m_vecAnimations.empty())
     {
@@ -42,7 +42,7 @@ void imanim::SequentialAnimationGroup::onStartAnimation()
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::SequentialAnimationGroup::onStopAnimation()
+void ImAnim::SequentialAnimationGroup::onStopAnimation()
 {
     if (m_pCurrentAnimation != nullptr)
     {
@@ -54,7 +54,7 @@ void imanim::SequentialAnimationGroup::onStopAnimation()
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::SequentialAnimationGroup::update()
+void ImAnim::SequentialAnimationGroup::update()
 {
     if ((m_eAnimationState != State::Running) ||
         (m_pCurrentAnimation == nullptr))
@@ -90,7 +90,7 @@ void imanim::SequentialAnimationGroup::update()
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::SequentialAnimationGroup::updateValueForProgress(
+void ImAnim::SequentialAnimationGroup::updateValueForProgress(
     [[maybe_unused]] double dProgress)
 {
 }

@@ -4,13 +4,13 @@
 #include "imgui.h"
 #include <vector>
 
-namespace imanim
+namespace ImAnim
 {
 
 /**
  * @brief Performs an animation using a ImVec2 object
  */
-class ImVec2Anim : public imanim::AbstractAnimation
+class ImVec2Anim : public ImAnim::AbstractAnimation
 {
 public:
 
@@ -108,4 +108,4 @@ protected:
     size_t m_nEndKeyFrameIndex { 0 };
 };
 
-} // namespace imanim
+} // namespace ImAnim

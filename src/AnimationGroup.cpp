@@ -1,7 +1,7 @@
 #include "AnimationGroup.h"
 #include <algorithm>
 
-void imanim::AnimationGroup::addAnimation(AbstractAnimation *pAnimation)
+void ImAnim::AnimationGroup::addAnimation(AbstractAnimation *pAnimation)
 {
     if (pAnimation != nullptr)
     {
@@ -11,14 +11,14 @@ void imanim::AnimationGroup::addAnimation(AbstractAnimation *pAnimation)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::AnimationGroup::clear()
+void ImAnim::AnimationGroup::clear()
 {
     m_vecAnimations.clear();
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-imanim::AbstractAnimation *imanim::AnimationGroup::getAnimationAt(int nIndex)
+ImAnim::AbstractAnimation *ImAnim::AnimationGroup::getAnimationAt(int nIndex)
     const
 {
     AbstractAnimation *pAnimation = nullptr;
@@ -33,14 +33,14 @@ imanim::AbstractAnimation *imanim::AnimationGroup::getAnimationAt(int nIndex)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-int imanim::AnimationGroup::getAnimationCount() const
+int ImAnim::AnimationGroup::getAnimationCount() const
 {
     return static_cast<int>(m_vecAnimations.size());
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::AnimationGroup::insertAnimation(int nIndex,
+void ImAnim::AnimationGroup::insertAnimation(int nIndex,
     AbstractAnimation *pAnimation)
 {
     if (pAnimation == nullptr)
@@ -65,7 +65,7 @@ void imanim::AnimationGroup::insertAnimation(int nIndex,
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-int imanim::AnimationGroup::removeAnimation(AbstractAnimation *pAnimation)
+int ImAnim::AnimationGroup::removeAnimation(AbstractAnimation *pAnimation)
 {
     int nRemoveCount = 0;
 

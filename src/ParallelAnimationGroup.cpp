@@ -1,6 +1,6 @@
 #include "ParallelAnimationGroup.h"
 
-float imanim::ParallelAnimationGroup::getDuration() const
+float ImAnim::ParallelAnimationGroup::getDuration() const
 {
     float fDurationInSecs = 0.0F;
 
@@ -31,7 +31,7 @@ float imanim::ParallelAnimationGroup::getDuration() const
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::ParallelAnimationGroup::onStartAnimation()
+void ImAnim::ParallelAnimationGroup::onStartAnimation()
 {
     if (m_vecAnimations.empty())
     {
@@ -50,7 +50,7 @@ void imanim::ParallelAnimationGroup::onStartAnimation()
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::ParallelAnimationGroup::onStopAnimation()
+void ImAnim::ParallelAnimationGroup::onStopAnimation()
 {
     // Make sure that all our animations are stopped
     for (const auto &pAnimation : m_vecAnimations)
@@ -61,7 +61,7 @@ void imanim::ParallelAnimationGroup::onStopAnimation()
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::ParallelAnimationGroup::update()
+void ImAnim::ParallelAnimationGroup::update()
 {
     if (m_eAnimationState != State::Running)
     {
@@ -101,7 +101,7 @@ void imanim::ParallelAnimationGroup::update()
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void imanim::ParallelAnimationGroup::updateValueForProgress(
+void ImAnim::ParallelAnimationGroup::updateValueForProgress(
     [[maybe_unused]] double dProgress)
 {
 }

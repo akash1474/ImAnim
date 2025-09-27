@@ -132,7 +132,7 @@ int main(int, char **)
 
         // Begin animation testing
         {
-            static imanim::ParallelAnimationGroup *pParallelAnimGroup = nullptr;
+            static ImAnim::ParallelAnimationGroup *pParallelAnimGroup = nullptr;
             static ImVec4 vText1Color(1, 1, 1, 1);
             static ImVec4 vText2Color(1, 0, 0, 1);
             static const ImVec2 vStartWin1Pos(
@@ -154,43 +154,43 @@ int main(int, char **)
             ImGui::NewLine();
             bool bIsAnimRunning = (pParallelAnimGroup != nullptr) &&
                 (pParallelAnimGroup->getState() ==
-                imanim::AbstractAnimation::State::Running);
+                ImAnim::AbstractAnimation::State::Running);
             ImGui::BeginDisabled(bIsAnimRunning);
             if (ImGui::Button("Start Animation"))
             {
                 if (pParallelAnimGroup == nullptr)
                 {
                     // Create a group of animations to run in parallel
-                    pParallelAnimGroup = new imanim::ParallelAnimationGroup();
+                    pParallelAnimGroup = new ImAnim::ParallelAnimationGroup();
 
-                    auto *pColorAnim1 = new imanim::ImVec4Anim(&vText1Color);
+                    auto *pColorAnim1 = new ImAnim::ImVec4Anim(&vText1Color);
                     pColorAnim1->setStartValue(ImVec4(1, 1, 1, 1));
                     pColorAnim1->setEndValue(ImVec4(1, 0, 0, 1));
                     pColorAnim1->setDuration(1.5);
                     pColorAnim1->setEasingCurve(
-                        imanim::EasingCurve::Type::Linear);
+                        ImAnim::EasingCurve::Type::Linear);
 
-                    auto *pColorAnim2 = new imanim::ImVec4Anim(&vText2Color);
+                    auto *pColorAnim2 = new ImAnim::ImVec4Anim(&vText2Color);
                     pColorAnim2->setStartValue(ImVec4(1, 0, 0, 1));
                     pColorAnim2->setEndValue(ImVec4(0, 1, 0, 1));
                     pColorAnim2->setDuration(1.5);
                     pColorAnim2->setEasingCurve(
-                        imanim::EasingCurve::Type::Linear);
+                        ImAnim::EasingCurve::Type::Linear);
  
-                    auto *pWin1PosAnim = new imanim::ImVec2Anim(&vWin1Pos);
+                    auto *pWin1PosAnim = new ImAnim::ImVec2Anim(&vWin1Pos);
                     pWin1PosAnim->setStartValue(vStartWin1Pos);
                     pWin1PosAnim->setEndValue(ImVec2((vStartWin1Pos.x + 400),
                         vStartWin1Pos.y));
                     pWin1PosAnim->setEasingCurve(
-                        imanim::EasingCurve::Type::InOutCubic);
+                        ImAnim::EasingCurve::Type::InOutCubic);
                     pWin1PosAnim->setDuration(2.5);
 
-                    auto *pWin2PosAnim = new imanim::ImVec2Anim(&vWin2Pos);
+                    auto *pWin2PosAnim = new ImAnim::ImVec2Anim(&vWin2Pos);
                     pWin2PosAnim->setStartValue(vStartWin2Pos);
                     pWin2PosAnim->setEndValue(ImVec2((vStartWin2Pos.x + 700),
                         vStartWin2Pos.y));
                     pWin2PosAnim->setEasingCurve(
-                        imanim::EasingCurve::Type::InOutQuad);
+                        ImAnim::EasingCurve::Type::InOutQuad);
                     pWin2PosAnim->setDuration(3.0);
 
                     // Add the 4 animations to the parallel group

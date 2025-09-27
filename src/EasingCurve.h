@@ -1,6 +1,6 @@
 #pragma once
 
-namespace imanim
+namespace ImAnim
 {
 
 /**
@@ -134,4 +134,4 @@ private:
     double m_dPeriod { 0.3 };
 };
 
-} // namespace imanim
+} // namespace ImAnim

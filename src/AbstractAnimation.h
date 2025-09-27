@@ -3,7 +3,7 @@
 #include "EasingCurve.h"
 #include <chrono>
 
-namespace imanim
+namespace ImAnim
 {
 
 /**
@@ -49,7 +49,7 @@ public:
      * Retrieves the easing curve being used for this animation
      * @return this animation's easing curve
      */
-    [[nodiscard]] const imanim::EasingCurve &getEasingCurve() const;
+    [[nodiscard]] const ImAnim::EasingCurve &getEasingCurve() const;
 
     /**
      * Returns the loop count for this animation, which is the numer of loops
@@ -92,7 +92,7 @@ public:
      *      This is only applicable to back curves and will be ignored for other
      *      curves.  Values < 0.0 are invalid and will be ignored.
      */
-    void setEasingCurve(imanim::EasingCurve::Type eEasingCurveType,
+    void setEasingCurve(ImAnim::EasingCurve::Type eEasingCurveType,
         double dAmplitude = 1.0, double dPeriod = 0.3,
         double dOvershoot = 1.70158);
 
@@ -158,7 +158,7 @@ protected:
 private:
 
     /// the easing curve used for this animation
-    imanim::EasingCurve m_easingCurve;
+    ImAnim::EasingCurve m_easingCurve;
 
     /// the duration for this animation in seconds
     float m_fDurationInSecs { 0.0F };
@@ -167,4 +167,4 @@ private:
     std::chrono::steady_clock::time_point m_startTime;
 };
 
-} // namespace imanim
+} // namespace ImAnim
