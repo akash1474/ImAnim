@@ -5,38 +5,36 @@
 namespace ImAnim
 {
 
-/**
- * @brief An animation that acts like a pause and does nothing during its
- * duration
- */
-class PauseAnimation : public ImAnim::AbstractAnimation
-{
-public:
-
     /**
-     * PauseAnimation constructor
+     * @brief An animation that acts like a pause and does nothing during its
+     * duration
      */
-    PauseAnimation() = default;
+    class PauseAnimation : public ImAnim::AbstractAnimation
+    {
+      public:
+        /**
+         * PauseAnimation constructor
+         */
+        PauseAnimation() = default;
 
-    /**
-     * PauseAnimation constructor
-     * @param fDurationInSecs the duration for this pause in seconds
-     */
-    explicit PauseAnimation(float fDurationInSecs);
+        /**
+         * PauseAnimation constructor
+         * @param fDurationInSecs the duration for this pause in seconds
+         */
+        explicit PauseAnimation(float fDurationInSecs);
 
-    /**
-     * PauseAnimation destructor
-     */
-    virtual ~PauseAnimation() = default;
+        /**
+         * PauseAnimation destructor
+         */
+        virtual ~PauseAnimation() = default;
 
-protected:
-
-    /**
-     * @brief Extending classes should update their value being interpolated
-     * based on the specified current progress
-     * @param dProgress the current progress for this animation
-     */
-    void updateValueForProgress(double dProgress) override;
-};
+      protected:
+        /**
+         * @brief Extending classes should update their value being interpolated
+         * based on the specified current progress
+         * @param dProgress the current progress for this animation
+         */
+        void updateValueForProgress(double dProgress) override;
+    };
 
 } // namespace ImAnim

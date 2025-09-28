@@ -1,21 +1,20 @@
-#pragma once
-
 #include "AbstractAnimation.h"
-
 namespace ImAnim
 {
 
     /**
      * @brief Performs an animation on a single float value.
      */
-    class FloatAnim : public AbstractAnimation
+    class FloatAnim : public ImAnim::AbstractAnimation
     {
       public:
         /**
          * FloatAnim constructor.
          * @param pValue A pointer to the float value that this animation will modify.
+         * If nullptr, an internal float will be used, and the value
+         * can be retrieved with getCurrentValue().
          */
-        explicit FloatAnim(float* pValue);
+        explicit FloatAnim(float* pValue = nullptr);
 
         /**
          * FloatAnim destructor.
@@ -46,6 +45,13 @@ namespace ImAnim
          */
         [[nodiscard]] float getEndValue() const;
 
+        /**
+         * @brief Returns the current animated value.
+         * @return The current value of the animation, whether it's managed
+         * internally or by an external pointer.
+         */
+        [[nodiscard]] float getCurrentValue() const;
+
       protected:
         /**
          * @brief Updates the associated float value based on the current
@@ -55,14 +61,17 @@ namespace ImAnim
         void updateValueForProgress(double dProgress) override;
 
       private:
-        /// A pointer to the float value that is being animated.
+        /// A pointer to the float value that is being animated. Can be nullptr.
         float* m_pValue;
 
+        /// The internal float value, used when m_pValue is nullptr.
+        float m_internalValue{ 0.0f };
+
         /// The starting value for the animation.
-        float m_fStartValue{0.0f};
+        float m_fStartValue{ 0.0f };
 
         /// The ending value for the animation.
-        float m_fEndValue{0.0f};
+        float m_fEndValue{ 0.0f };
     };
 
 } // namespace ImAnim

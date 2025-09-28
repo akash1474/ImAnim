@@ -5,11 +5,11 @@ float ImAnim::ParallelAnimationGroup::getDuration() const
     float fDurationInSecs = 0.0F;
 
     // Traverse our animations and find the one with the maximum duration
-    for (const auto &pAnimation : m_vecAnimations)
+    for(const auto& pAnimation : m_vecAnimations)
     {
         int nLoopCount = pAnimation->getLoopCount();
         float fCurDurationInSecs = pAnimation->getDuration();
-        if ((nLoopCount < 0) || (fCurDurationInSecs < 0.0F))
+        if((nLoopCount < 0) || (fCurDurationInSecs < 0.0F))
         {
             // The animation has an infinite time, so set the duration to -1
             // and break loop
@@ -17,9 +17,8 @@ float ImAnim::ParallelAnimationGroup::getDuration() const
             break;
         }
 
-        float fTotalDurationInSecs = (static_cast<float>(nLoopCount) *
-            fCurDurationInSecs);
-        if (fTotalDurationInSecs > fDurationInSecs)
+        float fTotalDurationInSecs = (static_cast<float>(nLoopCount) * fCurDurationInSecs);
+        if(fTotalDurationInSecs > fDurationInSecs)
         {
             // Save this duration as it is the current max duration
             fDurationInSecs = fTotalDurationInSecs;
@@ -33,7 +32,7 @@ float ImAnim::ParallelAnimationGroup::getDuration() const
 
 void ImAnim::ParallelAnimationGroup::onStartAnimation()
 {
-    if (m_vecAnimations.empty())
+    if(m_vecAnimations.empty())
     {
         // No animations so stop
         m_eAnimationState = State::Stopped;
@@ -42,7 +41,7 @@ void ImAnim::ParallelAnimationGroup::onStartAnimation()
     }
 
     // Start all our animations
-    for (const auto &pAnimation : m_vecAnimations)
+    for(const auto& pAnimation : m_vecAnimations)
     {
         pAnimation->start();
     }
@@ -53,7 +52,7 @@ void ImAnim::ParallelAnimationGroup::onStartAnimation()
 void ImAnim::ParallelAnimationGroup::onStopAnimation()
 {
     // Make sure that all our animations are stopped
-    for (const auto &pAnimation : m_vecAnimations)
+    for(const auto& pAnimation : m_vecAnimations)
     {
         pAnimation->stop();
     }
@@ -63,27 +62,27 @@ void ImAnim::ParallelAnimationGroup::onStopAnimation()
 
 void ImAnim::ParallelAnimationGroup::update()
 {
-    if (m_eAnimationState != State::Running)
+    if(m_eAnimationState != State::Running)
     {
         return;
     }
 
     // Update all our animations
     bool bIsRunning = false;
-    for (const auto &pAnimation : m_vecAnimations)
+    for(const auto& pAnimation : m_vecAnimations)
     {
         pAnimation->update();
-        if (pAnimation->getState() == State::Running)
+        if(pAnimation->getState() == State::Running)
         {
             bIsRunning = true;
         }
     }
 
-    if (!bIsRunning)
+    if(!bIsRunning)
     {
         // Increment the loop
         m_nCurrentLoop++;
-        if ((m_nCurrentLoop >= m_nLoopCount) && (m_nLoopCount >= 0))
+        if((m_nCurrentLoop >= m_nLoopCount) && (m_nLoopCount >= 0))
         {
             // This animation is finished
             m_eAnimationState = State::Stopped;
@@ -92,7 +91,7 @@ void ImAnim::ParallelAnimationGroup::update()
         }
 
         // Start all our animations since starting a new loop
-        for (const auto &pAnimation : m_vecAnimations)
+        for(const auto& pAnimation : m_vecAnimations)
         {
             pAnimation->start();
         }
@@ -101,7 +100,4 @@ void ImAnim::ParallelAnimationGroup::update()
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void ImAnim::ParallelAnimationGroup::updateValueForProgress(
-    [[maybe_unused]] double dProgress)
-{
-}
+void ImAnim::ParallelAnimationGroup::updateValueForProgress([[maybe_unused]] double dProgress) {}

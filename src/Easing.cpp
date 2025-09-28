@@ -32,31 +32,22 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <algorithm>
 #include <cmath>
 
-double ImAnim::Easing::easeNone(double t) 
-{
-    return t;
-}
+double ImAnim::Easing::easeNone(double t) { return t; }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-double ImAnim::Easing::easeInQuad(double t)
-{
-    return t * t;
-}
+double ImAnim::Easing::easeInQuad(double t) { return t * t; }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-double ImAnim::Easing::easeOutQuad(double t)
-{
-    return -t * (t - 2.0);
-}
+double ImAnim::Easing::easeOutQuad(double t) { return -t * (t - 2.0); }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 double ImAnim::Easing::easeInOutQuad(double t)
 {
     t *= 2.0;
-    if (t < 1.0)
+    if(t < 1.0)
     {
         return t * t / 2.0;
     }
@@ -71,7 +62,7 @@ double ImAnim::Easing::easeInOutQuad(double t)
 
 double ImAnim::Easing::easeOutInQuad(double t)
 {
-    if (t < 0.5)
+    if(t < 0.5)
         return easeOutQuad(t * 2.0) / 2.0;
     else
         return easeInQuad((2.0 * t) - 1.0) / 2.0 + 0.5;
@@ -79,10 +70,7 @@ double ImAnim::Easing::easeOutInQuad(double t)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-double ImAnim::Easing::easeInCubic(double t)
-{
-    return t * t * t;
-}
+double ImAnim::Easing::easeInCubic(double t) { return t * t * t; }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -97,7 +85,7 @@ double ImAnim::Easing::easeOutCubic(double t)
 double ImAnim::Easing::easeInOutCubic(double t)
 {
     t *= 2.0;
-    if (t < 1.0)
+    if(t < 1.0)
     {
         return 0.5 * t * t * t;
     }
@@ -112,7 +100,7 @@ double ImAnim::Easing::easeInOutCubic(double t)
 
 double ImAnim::Easing::easeOutInCubic(double t)
 {
-    if (t < 0.5)
+    if(t < 0.5)
         return easeOutCubic(2.0 * t) / 2.0;
     else
         return easeInCubic(2.0 * t - 1.0) / 2.0 + 0.5;
@@ -120,10 +108,7 @@ double ImAnim::Easing::easeOutInCubic(double t)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-double ImAnim::Easing::easeInQuart(double t)
-{
-    return t * t * t * t;
-}
+double ImAnim::Easing::easeInQuart(double t) { return t * t * t * t; }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -138,7 +123,7 @@ double ImAnim::Easing::easeOutQuart(double t)
 double ImAnim::Easing::easeInOutQuart(double t)
 {
     t *= 2.0;
-    if (t < 1.0)
+    if(t < 1.0)
     {
         return 0.5 * t * t * t * t;
     }
@@ -153,7 +138,7 @@ double ImAnim::Easing::easeInOutQuart(double t)
 
 double ImAnim::Easing::easeOutInQuart(double t)
 {
-    if (t < 0.5)
+    if(t < 0.5)
         return easeOutQuart(2.0 * t) / 2.0;
     else
         return easeInQuart(2.0 * t - 1.0) / 2.0 + 0.5;
@@ -161,10 +146,7 @@ double ImAnim::Easing::easeOutInQuart(double t)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-double ImAnim::Easing::easeInQuint(double t)
-{
-    return t * t * t * t * t;
-}
+double ImAnim::Easing::easeInQuint(double t) { return t * t * t * t * t; }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -179,7 +161,7 @@ double ImAnim::Easing::easeOutQuint(double t)
 double ImAnim::Easing::easeInOutQuint(double t)
 {
     t *= 2.0;
-    if (t < 1.0)
+    if(t < 1.0)
     {
         return 0.5 * t * t * t * t * t;
     }
@@ -194,7 +176,7 @@ double ImAnim::Easing::easeInOutQuint(double t)
 
 double ImAnim::Easing::easeOutInQuint(double t)
 {
-    if (t < 0.5)
+    if(t < 0.5)
         return easeOutQuint(2.0 * t) / 2.0;
     else
         return easeInQuint(2.0 * t - 1.0) / 2.0 + 0.5;
@@ -202,30 +184,21 @@ double ImAnim::Easing::easeOutInQuint(double t)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-double ImAnim::Easing::easeInSine(double t)
-{
-    return (t == 1.0) ? 1.0 : -cos(t * M_PI_2) + 1.0;
-}
+double ImAnim::Easing::easeInSine(double t) { return (t == 1.0) ? 1.0 : -cos(t * M_PI_2) + 1.0; }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-double ImAnim::Easing::easeOutSine(double t)
-{
-    return sin(t * M_PI_2);
-}
+double ImAnim::Easing::easeOutSine(double t) { return sin(t * M_PI_2); }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-double ImAnim::Easing::easeInOutSine(double t)
-{
-    return -0.5 * (cos(M_PI * t) - 1.0);
-}
+double ImAnim::Easing::easeInOutSine(double t) { return -0.5 * (cos(M_PI * t) - 1.0); }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 double ImAnim::Easing::easeOutInSine(double t)
 {
-    if (t < 0.5)
+    if(t < 0.5)
         return easeOutSine(2.0 * t) / 2.0;
     else
         return easeInSine(2.0 * t - 1.0) / 2.0 + 0.5;
@@ -249,13 +222,13 @@ double ImAnim::Easing::easeOutExpo(double t)
 
 double ImAnim::Easing::easeInOutExpo(double t)
 {
-    if (t == 0.0)
+    if(t == 0.0)
         return 0.0;
-    if (t == 1.0)
+    if(t == 1.0)
         return 1.0;
 
     t *= 2.0;
-    if (t < 1.0)
+    if(t < 1.0)
         return 0.5 * pow(2.0, 10.0 * (t - 1.0)) - 0.0005;
     else
         return 0.5 * 1.0005 * (-pow(2.0, -10.0 * (t - 1.0)) + 2.0);
@@ -265,7 +238,7 @@ double ImAnim::Easing::easeInOutExpo(double t)
 
 double ImAnim::Easing::easeOutInExpo(double t)
 {
-    if (t < 0.5)
+    if(t < 0.5)
         return easeOutExpo(2.0 * t) / 2.0;
     else
         return easeInExpo(2.0 * t - 1.0) / 2.0 + 0.5;
@@ -273,10 +246,7 @@ double ImAnim::Easing::easeOutInExpo(double t)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-double ImAnim::Easing::easeInCirc(double t)
-{
-    return -(sqrt(1.0 - t * t) - 1.0);
-}
+double ImAnim::Easing::easeInCirc(double t) { return -(sqrt(1.0 - t * t) - 1.0); }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -291,7 +261,7 @@ double ImAnim::Easing::easeOutCirc(double t)
 double ImAnim::Easing::easeInOutCirc(double t)
 {
     t *= 2.0;
-    if (t < 1.0)
+    if(t < 1.0)
     {
         return -0.5 * (sqrt(1.0 - t * t) - 1.0);
     }
@@ -306,7 +276,7 @@ double ImAnim::Easing::easeInOutCirc(double t)
 
 double ImAnim::Easing::easeOutInCirc(double t)
 {
-    if (t < 0.5)
+    if(t < 0.5)
         return easeOutCirc(2.0 * t) / 2.0;
     else
         return easeInCirc(2.0 * t - 1.0) / 2.0 + 0.5;
@@ -330,14 +300,14 @@ double ImAnim::Easing::easeOutElastic(double t, double a, double p)
 
 double ImAnim::Easing::easeInOutElastic(double t, double a, double p)
 {
-    if (t == 0.0)
+    if(t == 0.0)
         return 0.0;
     t *= 2.0;
-    if (t == 2.0)
+    if(t == 2.0)
         return 1.0;
 
     double s;
-    if (a < 1.0)
+    if(a < 1.0)
     {
         a = 1.0;
         s = p / 4.0;
@@ -347,15 +317,13 @@ double ImAnim::Easing::easeInOutElastic(double t, double a, double p)
         s = p / (2.0 * M_PI) * asin(1.0 / a);
     }
 
-    if (t < 1.0)
+    if(t < 1.0)
     {
-        return -0.5 * (a * pow(2.0, 10.0 * (t - 1.0)) * sin((t - 1.0 - s) *
-            (2.0 * M_PI) / p));
+        return -0.5 * (a * pow(2.0, 10.0 * (t - 1.0)) * sin((t - 1.0 - s) * (2.0 * M_PI) / p));
     }
     else
     {
-        return a * pow(2.0, -10.0 * (t - 1.0)) * sin((t - 1.0 - s) *
-            (2.0 * M_PI) / p) * 0.5 + 1.0;
+        return a * pow(2.0, -10.0 * (t - 1.0)) * sin((t - 1.0 - s) * (2.0 * M_PI) / p) * 0.5 + 1.0;
     }
 }
 
@@ -363,7 +331,7 @@ double ImAnim::Easing::easeInOutElastic(double t, double a, double p)
 
 double ImAnim::Easing::easeOutInElastic(double t, double a, double p)
 {
-    if (t < 0.5)
+    if(t < 0.5)
         return easeOutElasticHelper(t * 2.0, 0.0, 0.5, 1.0, a, p);
     else
         return easeInElasticHelper(2.0 * t - 1.0, 0.5, 0.5, 1.0, a, p);
@@ -371,10 +339,7 @@ double ImAnim::Easing::easeOutInElastic(double t, double a, double p)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-double ImAnim::Easing::easeInBack(double t, double s)
-{
-    return t * t * ((s + 1.0) * t - s);
-}
+double ImAnim::Easing::easeInBack(double t, double s) { return t * t * ((s + 1.0) * t - s); }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -389,7 +354,7 @@ double ImAnim::Easing::easeOutBack(double t, double s)
 double ImAnim::Easing::easeInOutBack(double t, double s)
 {
     t *= 2.0;
-    if (t < 1.0)
+    if(t < 1.0)
     {
         s *= 1.525;
         return 0.5 * (t * t * ((s + 1.0) * t - s));
@@ -406,7 +371,7 @@ double ImAnim::Easing::easeInOutBack(double t, double s)
 
 double ImAnim::Easing::easeOutInBack(double t, double s)
 {
-    if (t < 0.5)
+    if(t < 0.5)
         return easeOutBack(2.0 * t, s) / 2.0;
     else
         return easeInBack(2.0 * t - 1.0, s) / 2.0 + 0.5;
@@ -421,16 +386,13 @@ double ImAnim::Easing::easeInBounce(double t, double a)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-double ImAnim::Easing::easeOutBounce(double t, double a)
-{
-    return easeOutBounceHelper(t, 1.0, a);
-}
+double ImAnim::Easing::easeOutBounce(double t, double a) { return easeOutBounceHelper(t, 1.0, a); }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 double ImAnim::Easing::easeInOutBounce(double t, double a)
 {
-    if (t < 0.5)
+    if(t < 0.5)
         return easeInBounce(2.0 * t, a) / 2.0;
     else
         return (t == 1.0) ? 1.0 : easeOutBounce(2.0 * t - 1.0, a) / 2.0 + 0.5;
@@ -440,7 +402,7 @@ double ImAnim::Easing::easeInOutBounce(double t, double a)
 
 double ImAnim::Easing::easeOutInBounce(double t, double a)
 {
-    if (t < 0.5)
+    if(t < 0.5)
         return easeOutBounceHelper(t * 2.0, 0.5, a);
     else
         return 1.0 - easeOutBounceHelper(2.0 - 2.0 * t, 0.5, a);
@@ -450,17 +412,17 @@ double ImAnim::Easing::easeOutInBounce(double t, double a)
 
 // private methods
 
-double ImAnim::Easing::easeInElasticHelper(double t, double b, double c,
-    double d, double a, double p)
+double
+ImAnim::Easing::easeInElasticHelper(double t, double b, double c, double d, double a, double p)
 {
-    if (t == 0.0)
+    if(t == 0.0)
         return b;
     double t_adj = t / d;
-    if (t_adj == 1.0)
+    if(t_adj == 1.0)
         return b + c;
 
     double s;
-    if (a < fabs(c))
+    if(a < fabs(c))
     {
         a = c;
         s = p / 4.0;
@@ -471,26 +433,25 @@ double ImAnim::Easing::easeInElasticHelper(double t, double b, double c,
     }
 
     t_adj -= 1.0;
-    return -(a * pow(2.0, 10.0 * t_adj) * sin((t_adj * d - s) *
-        (2.0 * M_PI) / p)) + b;
+    return -(a * pow(2.0, 10.0 * t_adj) * sin((t_adj * d - s) * (2.0 * M_PI) / p)) + b;
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 double ImAnim::Easing::easeOutBounceHelper(double t, double c, double a)
 {
-    if (t == 1.0)
+    if(t == 1.0)
         return c;
-    if (t < (4.0 / 11.0))
+    if(t < (4.0 / 11.0))
     {
         return c * (7.5625 * t * t);
     }
-    else if (t < (8.0 / 11.0))
+    else if(t < (8.0 / 11.0))
     {
         t -= (6.0 / 11.0);
         return -a * (1.0 - (7.5625 * t * t + 0.75)) + c;
     }
-    else if (t < (10.0 / 11.0))
+    else if(t < (10.0 / 11.0))
     {
         t -= (9.0 / 11.0);
         return -a * (1.0 - (7.5625 * t * t + 0.9375)) + c;
@@ -504,16 +465,22 @@ double ImAnim::Easing::easeOutBounceHelper(double t, double c, double a)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-double ImAnim::Easing::easeOutElasticHelper(double t, double /*b*/,
-    double c, double /*d*/, double a, double p)
+double ImAnim::Easing::easeOutElasticHelper(
+    double t,
+    double /*b*/,
+    double c,
+    double /*d*/,
+    double a,
+    double p
+)
 {
-    if (t == 0.0)
+    if(t == 0.0)
         return 0.0;
-    if (t == 1.0)
+    if(t == 1.0)
         return c;
 
     double s;
-    if (a < c)
+    if(a < c)
     {
         a = c;
         s = p / 4.0;

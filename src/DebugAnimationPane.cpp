@@ -1,4 +1,5 @@
 #include "DebugAnimationPane.h"
+#include "AbstractAnimation.h"
 #include "imgui.h"
 #include "FloatAnim.h"
 #include "EasingCurve.h"
@@ -6,6 +7,7 @@
 
 void ImAnim::RenderDebugAnimationPane()
 {
+    // Static variables to preserve the state of the debug pane between frames.
     static float animatedValue = 0.0f;
     static ImAnim::FloatAnim animation(&animatedValue);
 
@@ -15,12 +17,11 @@ void ImAnim::RenderDebugAnimationPane()
     static float period = 0.3f;
     static float overshoot = 1.70158f;
     static bool repeatAnimation = true;
-    static bool updated = false;
 
     if(ImGui::Begin("Animation Debug Pane"))
     {
         // --- Top Section (Controls) ---
-        // Dropdown to select the easing function.
+
         if(ImGui::Combo(
                "Easing Function",
                &selectedEasingIndex,
@@ -28,67 +29,67 @@ void ImAnim::RenderDebugAnimationPane()
                IM_ARRAYSIZE(ImAnim::EasingCurve::TYPE_STRINGS)
            ))
         {
-            animation.stop();
+            if(animation.getState() == ImAnim::State::Running)
+            {
+                animation.stop();
+            }
         }
 
-        // Slider to control the animation duration.
-        if(ImGui::SliderFloat("Duration (s)", &duration, 0.1f, 5.0f, "%.2f"))
-        {
-            updated = true;
-        }
+        ImGui::SliderFloat("Duration (s)", &duration, 0.1f, 5.0f, "%.2f");
 
-        // --- Conditional Sliders ---
+        // --- Conditional Sliders for specific easing types ---
         const char* selectedName = ImAnim::EasingCurve::TYPE_STRINGS[selectedEasingIndex];
         if(strstr(selectedName, "Elastic") || strstr(selectedName, "Bounce"))
         {
             ImGui::SliderFloat("Amplitude", &amplitude, 0.0f, 2.0f);
-            updated = true;
         }
         if(strstr(selectedName, "Elastic"))
         {
             ImGui::SliderFloat("Period", &period, 0.1f, 1.0f);
-            updated = true;
         }
         if(strstr(selectedName, "Back"))
         {
             ImGui::SliderFloat("Overshoot", &overshoot, 0.0f, 5.0f);
-            updated = true;
         }
 
-        if(ImGui::Checkbox("Repeat", &repeatAnimation))
-        {
-            updated = true;
-        }
+        ImGui::Checkbox("Repeat", &repeatAnimation);
         ImGui::Spacing();
 
-        // Button to start the animation.
-        if(ImGui::Button("Play Animation", ImVec2(-1, 0)) || updated)
+        // --- Action Buttons ---
+        ImGui::Columns(2, nullptr, false);
+
+        if(ImGui::Button("Play Animation", ImVec2(-1, 0)))
         {
-            animation.stop(); // Stop previous animation
+            animation.stop();
+
             animation.setStartValue(0.0f);
             animation.setEndValue(1.0f);
             animation.setDuration(duration);
-
-            // Set loop count based on the "Repeat" checkbox.
-            // -1 means loop indefinitely. 1 means play once.
             animation.setLoopCount(repeatAnimation ? -1 : 1);
-
             animation.setEasingCurve(
                 static_cast<ImAnim::EasingCurve::Type>(selectedEasingIndex),
                 amplitude,
                 period,
                 overshoot
             );
+
             animation.start();
-            updated = false;
         }
+
+        ImGui::NextColumn();
+
+        if(ImGui::Button("Stop", ImVec2(-1, 0)))
+        {
+            animation.stop();
+        }
+
+        ImGui::Columns(1);
 
         ImGui::Separator();
         ImGui::Spacing();
 
         // --- Bottom Section (Visualization) ---
         ImGui::Text("Easing Function Shape:");
-        // Graph the shape of the selected easing curve.
         {
             ImAnim::EasingCurve curve(static_cast<ImAnim::EasingCurve::Type>(selectedEasingIndex));
             curve.setAmplitude(amplitude);
@@ -122,6 +123,5 @@ void ImAnim::RenderDebugAnimationPane()
     }
     ImGui::End();
 
-    // IMPORTANT: The animation object must be updated every frame for it to work.
     animation.update();
 }

@@ -1,9 +1,6 @@
 #include "PauseAnimation.h"
 
-ImAnim::PauseAnimation::PauseAnimation(float fDurationInSecs)
-{
-    setDuration(fDurationInSecs);
-}
+ImAnim::PauseAnimation::PauseAnimation(float fDurationInSecs) { setDuration(fDurationInSecs); }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

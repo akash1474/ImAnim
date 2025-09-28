@@ -64,6 +64,7 @@ namespace ImAnim
          * @return this animation's state
          */
         [[nodiscard]] State getState() const { return m_eAnimationState; }
+        [[nodiscard]] bool isRunning() const { return m_eAnimationState == State::Running; }
 
         /**
          * Sets the duration for this animation
