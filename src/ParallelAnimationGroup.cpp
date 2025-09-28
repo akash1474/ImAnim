@@ -67,7 +67,7 @@ void ImAnim::ParallelAnimationGroup::update()
         return;
     }
 
-    // Update all our animations
+    // Update all our animations and check if any are still running
     bool bIsRunning = false;
     for(const auto& pAnimation : m_vecAnimations)
     {
@@ -84,10 +84,14 @@ void ImAnim::ParallelAnimationGroup::update()
         m_nCurrentLoop++;
         if((m_nCurrentLoop >= m_nLoopCount) && (m_nLoopCount >= 0))
         {
-            // This animation is finished
-            m_eAnimationState = State::Stopped;
-            m_nCurrentLoop = 0;
+            stop(); // Use the group's own stop method.
             return;
+        }
+
+        // Explicitly stop all children
+        for(const auto& pAnimation : m_vecAnimations)
+        {
+            pAnimation->stop();
         }
 
         // Start all our animations since starting a new loop
