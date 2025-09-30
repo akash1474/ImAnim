@@ -29,7 +29,7 @@ void ImAnim::RenderDebugAnimationPane()
                IM_ARRAYSIZE(ImAnim::EasingCurve::TYPE_STRINGS)
            ))
         {
-            if(animation.getState() == ImAnim::State::Running)
+            if(animation.isRunning())
             {
                 animation.stop();
             }
