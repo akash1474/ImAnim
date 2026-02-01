@@ -1,4 +1,7 @@
+#pragma once
+
 #include "AbstractAnimation.h"
+
 namespace ImAnim
 {
 
