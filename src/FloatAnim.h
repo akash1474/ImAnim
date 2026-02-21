@@ -55,11 +55,19 @@ namespace ImAnim
          */
         [[nodiscard]] float getCurrentValue() const;
 
+        /**
+         * @brief Directly sets the current value without animation.
+         * This is useful for initializing or resetting the animation state.
+         * @param fValue The value to set.
+         */
+        void setCurrentValue(float fValue);
+
       protected:
         /**
          * @brief Updates the associated float value based on the current
          * animation progress. This is called automatically by the update() method.
-         * @param dProgress The current progress of the animation (a value from 0.0 to 1.0).
+         * @param dProgress The current progress of the animation (a value from 0.0
+         * to 1.0).
          */
         void updateValueForProgress(double dProgress) override;
 
